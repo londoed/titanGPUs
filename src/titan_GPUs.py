@@ -20,7 +20,8 @@
 
 #       Include modules
 
-from time import localtime
+
+import numpy as np
 
 #       Configuration variables
 
@@ -32,8 +33,6 @@ cabinets = []
 
 pict_file = "dc16.html"
 
-update_pict()
-print_pict()
 
 #       Initialize cabinets
 
@@ -55,16 +54,13 @@ while x < x_dim:
 
 #       Update picture
 
-def update_pict():
+def update_pict(cabinets):
     num_2_replace = 0
     file1 = open("dc16.txt", 'r')
-    file1.readlines()
-    print("in Update\n")
-    while file1.readlines() == True:
+    # print("in Update\n")
+    while True:
         num_2_replace += 1
-        for line in file1:
-            node = line
-        nd = list(node)
+        nd = list(file1.readlines())
         if nd[2] == '-':
             x = nd[1],
             y = nd[3],
@@ -77,10 +73,12 @@ def update_pict():
             c = nd[6],
             s = nd[8],
             n = nd[10],
+        if not nd:
+            break
 
 #       Print cabs
 
-[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
+cabinets[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
 file1.close()
 
 file2 = open("service.txt", 'r')
@@ -120,7 +118,7 @@ file2.close()
 
 #       Print picture
 
-def print_pict():
+def print_pict(cabinets):
     num_todo = num_2_replace - num_completed
     print("In Print\n")
 
