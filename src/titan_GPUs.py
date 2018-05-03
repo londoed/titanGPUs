@@ -24,8 +24,9 @@ from time import localtime
 
 #       Configuration variables
 
-x_dim = 25
-y_dim = 8
+x_dim = 25 # Number of columns of system (Titan has 24, 0-24)
+y_dim = 8 # Number of rows in system (Titan has 7, 0-7)
+cabinets = []
 
 #       Define file locations
 
@@ -37,7 +38,7 @@ print_pict()
 #       Initialize cabinets
 
 
-x,y,c,s,n = [0,0,0,0,0]
+x,y,c,s,n = [0,0,0,0,0] # (x,y) = cabinet position, c = cage, s = slot, n = node
 
 
 while x < x_dim:
@@ -50,40 +51,41 @@ while x < x_dim:
                 s += 1
                 while n < 4:
                     n += 1
-                    [x][y][c][s][n] = "<td>n</td>"
+                    cabinets[x][y][c][s][n] = "<td>n</td>"
 
 #       Update picture
 
 def update_pict():
     num_2_replace = 0
     file1 = open("dc16.txt", 'r')
-    file1.read()
+    file1.readlines()
     print("in Update\n")
-    while file1.read():
+    while file1.readlines() == True:
         num_2_replace += 1
-        node = None
-    nd = node.split(//)
-    if nd[2] == '-':
-        x = nd[1],
-        y = nd[3],
-        c = nd[5],
-        s = nd[7],
-        n = nd[9],
-    else:
-        x = 10 * nd[1] + nd[2],
-        y = nd[4],
-        c = nd[6],
-        s = nd[8],
-        n = nd[10],
+        for line in file1:
+            node = line
+        nd = list(node)
+        if nd[2] == '-':
+            x = nd[1],
+            y = nd[3],
+            c = nd[5],
+            s = nd[7],
+            n = nd[9],
+        else:
+            x = 10 * nd[1] + nd[2],
+            y = nd[4],
+            c = nd[6],
+            s = nd[8],
+            n = nd[10],
 
 #       Print cabs
 
 [x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
 file1.close()
 
-file2 = open("service", 'd')
-file2.read()
-while file2.read():
+file2 = open("service.txt", 'r')
+file2.readlines()
+while file2.readlines() == True:
     l = None.split(/ /)
     bgc = 'purple'
     node = None
