@@ -25,8 +25,8 @@ import numpy as np
 
 #       Configuration variables
 
-x_dim = 25 # Number of columns of system (Titan has 24, 0-24)
-y_dim = 8 # Number of rows in system (Titan has 7, 0-7)
+x_dim = 25 # Number of columns of system (Titan has 25, 0-24)
+y_dim = 8 # Number of rows in system (Titan has 8, 0-7)
 cabinets = []
 
 #       Define file locations
