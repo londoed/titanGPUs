@@ -58,9 +58,10 @@ def update_pict(cabs):
     num_2_replace = 0
     file1 = open("dc16.txt", 'r')
     # print("in Update\n")
-    nd = file1.readlines()
-    for i in file1:
+    node = file1.readlines()
+    for i in node:
         num_2_replace += 1
+        nd = i
         if nd[2] == '-':
             x = nd[1],
             y = nd[3],
@@ -68,14 +69,14 @@ def update_pict(cabs):
             s = nd[7],
             n = nd[9],
         else:
-            x = 10 * nd[1] + nd[2],
+            x = 1 * nd[1] + nd[2],
             y = nd[4],
             c = nd[6],
             s = nd[8],
             n = nd[10],
 
 #       Print cabs
-
+print(cabs[x][y][c][s][n])
 cabs[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
 file1.close()
 
