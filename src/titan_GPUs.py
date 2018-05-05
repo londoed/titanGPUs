@@ -27,7 +27,7 @@ import numpy as np
 
 x_dim = 25 # Number of columns of system (Titan has 25, 0-24)
 y_dim = 8 # Number of rows in system (Titan has 8, 0-7)
-cabinets = []
+cabs = []
 
 #       Define file locations
 
@@ -50,17 +50,17 @@ while x < x_dim:
                 s += 1
                 while n < 4:
                     n += 1
-                    cabinets[x][y][c][s][n] = "<td>n</td>"
+                    cabs[x][y][c][s][n] = "<td>n</td>"
 
 #       Update picture
 
-def update_pict(cabinets):
+def update_pict(cabs):
     num_2_replace = 0
     file1 = open("dc16.txt", 'r')
     # print("in Update\n")
-    while True:
+    nd = file1.readlines()
+    for i in file1:
         num_2_replace += 1
-        nd = list(file1.readlines())
         if nd[2] == '-':
             x = nd[1],
             y = nd[3],
@@ -73,24 +73,21 @@ def update_pict(cabinets):
             c = nd[6],
             s = nd[8],
             n = nd[10],
-        if not nd:
-            break
 
 #       Print cabs
 
-cabinets[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
+cabs[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
 file1.close()
 
 file2 = open("service.txt", 'r')
-file2.readlines()
-while file2.readlines() == True:
-    l = None.split(/ /)
+while True:
+    node = list(file2.readlines())
+    l = node.split(/ /)
     bgc = 'purple'
-    node = None
 
 #       Update picture
 
-nd = l[1].split(//)
+nd = l[0].split(//)
 if nd[2] == '-':
     x = nd[1],
     y = nd[3],
@@ -104,21 +101,39 @@ else:
     s = nd[8],
     n = nd[10],
 
-[x][y][c][s][n] = "<td bgcolor=\"$bgc\">$n</td>";
+cabs[x][y][c][s][n] = "<td bgcolor=\"bgc\">n</td>";
 file2.close()
 
+file1 = open("dc16.txt", 'r')
 #       Print cabs
-
+while True:
+    num_2_replace += 1
+    nd = list(file1.readlines())
+    if nd[2] == '-':
+        x = nd[1],
+        y = nd[3],
+        c = nd[5],
+        s = nd[7],
+        n = nd[9],
+    else:
+        x = 10 * nd[1] + nd[2],
+        y = nd[4],
+        c = nd[6],
+        s = nd[8],
+        n = nd[10],
+    if not nd:
+        break
 
 #       Update picture
 
 
 #       Print cabs
-
+cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
+file1.close()
 
 #       Print picture
 
-def print_pict(cabinets):
+def print_pict(cabs):
     num_todo = num_2_replace - num_completed
     print("In Print\n")
 
