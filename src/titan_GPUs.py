@@ -76,7 +76,6 @@ def update_pict(cabs):
             n = nd[10],
 
 #       Print cabs
-print(cabs[x][y][c][s][n])
 cabs[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
 file1.close()
 
