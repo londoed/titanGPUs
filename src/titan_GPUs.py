@@ -59,9 +59,8 @@ def update_pict(cabs):
     file1 = open("dc16.txt", 'r')
     # print("in Update\n")
     node = file1.readlines()
-    for i in node:
+    for nd in node:
         num_2_replace += 1
-        nd = i
         if nd[2] == '-':
             x = nd[1],
             y = nd[3],
@@ -76,60 +75,31 @@ def update_pict(cabs):
             n = nd[10],
 
 #       Print cabs
-cabs[x][y][c][s][n] = "<td bgcolor=\"red\">$n</td>"
+cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
 file1.close()
 
 file2 = open("service.txt", 'r')
-while True:
-    node = list(file2.readlines())
-    l = node.split(/ /)
+    node = file2.readlines()
     bgc = 'purple'
+    for nd in node:
+        num_2_replace += 1
+        if nd[2] == '-':
+            x = nd[1],
+            y = nd[3],
+            c = nd[5],
+            s = nd[7],
+            n = nd[9],
+        else:
+            x = 1 * nd[1] + nd[2],
+            y = nd[4],
+            c = nd[6],
+            s = nd[8],
+            n = nd[10],
 
 #       Update picture
-
-nd = l[0].split(//)
-if nd[2] == '-':
-    x = nd[1],
-    y = nd[3],
-    c = nd[5],
-    s = nd[7],
-    n = nd[9],
-else:
-    x = 10 * nd[1] + nd[2],
-    y = nd[4],
-    c = nd[6],
-    s = nd[8],
-    n = nd[10],
 
 cabs[x][y][c][s][n] = "<td bgcolor=\"bgc\">n</td>";
 file2.close()
-
-file1 = open("dc16.txt", 'r')
-#       Print cabs
-while True:
-    num_2_replace += 1
-    nd = list(file1.readlines())
-    if nd[2] == '-':
-        x = nd[1],
-        y = nd[3],
-        c = nd[5],
-        s = nd[7],
-        n = nd[9],
-    else:
-        x = 10 * nd[1] + nd[2],
-        y = nd[4],
-        c = nd[6],
-        s = nd[8],
-        n = nd[10],
-    if not nd:
-        break
-
-#       Update picture
-
-
-#       Print cabs
-cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
-file1.close()
 
 #       Print picture
 
