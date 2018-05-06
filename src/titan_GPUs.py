@@ -21,8 +21,6 @@
 #       Include modules
 
 
-import numpy as np
-
 #       Configuration variables
 
 x_dim = 25 # Number of columns of system (Titan has 25, 0-24)
@@ -104,8 +102,44 @@ file2.close()
 #       Print picture
 
 def print_pict(cabs):
-    num_todo = num_2_replace - num_completed
-    print("In Print\n")
+    x,y,c,s,n = [0,0,2,0,0]
+    cabs = []
+    open(pict_file, 'w')
+    html_str = """
+    <HTML>
+      <HEAD>
+         <META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">
+         <META HTTP-EQUIV=\"Refresh\" CONTENT=\"300\">
+         <TITLE>GPU Replacement status</TITLE>
+      </HEAD>
+      <font size=+8><pre>GPU Replacement status</pre>Details</font></a>
+      <TABLE BORDER=10 WIDTH=\"100%\" NOSAVE bordercolordark=\"blue\" bordercolorlight=\"gold\">"
+    """
 
-
-#
+html_file = open(pict_file, 'w')
+html_file.write(html_str)
+while y < 8:
+    y += 1
+    html_file.append("<tr>")
+    while x < x_dim:
+        x += 1
+        html_file.append("<th>cx-y</th>")
+            while x < x_dim:
+                x += 1
+                html_file.append("<td><table cols=8 width=\"100%\">\n")
+                while c >= 0:
+                    c -= 1
+                    while n < 4:
+                        n += 1
+                        html_file.append("<tr>")
+                        while s < 8:
+                            s += 1
+                            html_file.append(cabs[x][y][c][s][n])
+                            if n == 3 and c != 0:
+                                html_file.append("<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>")
+                            else:
+                                html_file.append("</tr>\n")
+                html_file.append("</table></td>\n")
+    html_file.append("</tr>")
+html_file.append("</table></body></html>")
+html_file.close()
