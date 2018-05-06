@@ -52,7 +52,9 @@ while x < x_dim:
 
 #       Update picture
 
-def update_pict(cabs):
+def update_pict():
+    x,y,c,s,n = [0,0,0,0,0]
+    cabs = []
     num_2_replace = 0
     file1 = open("dc16.txt", 'r')
     # print("in Update\n")
@@ -73,35 +75,35 @@ def update_pict(cabs):
             n = nd[10],
 
 #       Print cabs
-return cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
-file1.close()
+    return cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
+    file1.close()
 
-file2 = open("service.txt", 'r')
-    node = file2.readlines()
-    bgc = 'purple'
-    for nd in node:
-        num_2_replace += 1
-        if nd[2] == '-':
-            x = nd[1],
-            y = nd[3],
-            c = nd[5],
-            s = nd[7],
-            n = nd[9],
-        else:
-            x = 1 * nd[1] + nd[2],
-            y = nd[4],
-            c = nd[6],
-            s = nd[8],
-            n = nd[10],
+    file2 = open("service.txt", 'r')
+        node = file2.readlines()
+        bgc = 'purple'
+        for nd in node:
+            num_2_replace += 1
+            if nd[2] == '-':
+                x = nd[1],
+                y = nd[3],
+                c = nd[5],
+                s = nd[7],
+                n = nd[9],
+            else:
+                x = 1 * nd[1] + nd[2],
+                y = nd[4],
+                c = nd[6],
+                s = nd[8],
+                n = nd[10],
 
-#       Update picture
+    #       Update picture
 
-cabs[x][y][c][s][n] = "<td bgcolor=\"bgc\">n</td>";
-file2.close()
+    cabs[x][y][c][s][n] = "<td bgcolor=\"bgc\">n</td>";
+    file2.close()
 
 #       Print picture
 
-def print_pict(cabs):
+def print_pict():
     x,y,c,s,n = [0,0,2,0,0]
     cabs = []
     open(pict_file, 'w')
@@ -116,30 +118,33 @@ def print_pict(cabs):
       <TABLE BORDER=10 WIDTH=\"100%\" NOSAVE bordercolordark=\"blue\" bordercolorlight=\"gold\">"
     """
 
-html_file = open(pict_file, 'w')
-html_file.write(html_str)
-while y < 8:
-    y += 1
-    html_file.append("<tr>")
-    while x < x_dim:
-        x += 1
-        html_file.append("<th>cx-y</th>")
-            while x < x_dim:
-                x += 1
-                html_file.append("<td><table cols=8 width=\"100%\">\n")
-                while c >= 0:
-                    c -= 1
-                    while n < 4:
-                        n += 1
-                        html_file.append("<tr>")
-                        while s < 8:
-                            s += 1
-                            html_file.append(cabs[x][y][c][s][n])
-                            if n == 3 and c != 0:
-                                html_file.append("<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>")
-                            else:
-                                html_file.append("</tr>\n")
-                html_file.append("</table></td>\n")
-    html_file.append("</tr>")
-html_file.append("</table></body></html>")
-html_file.close()
+    html_file = open(pict_file, 'w')
+    html_file.write(html_str)
+    while y < 8:
+        y += 1
+        html_file.append("<tr>")
+        while x < x_dim:
+            x += 1
+            html_file.append("<th>cx-y</th>")
+                while x < x_dim:
+                    x += 1
+                    html_file.append("<td><table cols=8 width=\"100%\">\n")
+                    while c >= 0:
+                        c -= 1
+                        while n < 4:
+                            n += 1
+                            html_file.append("<tr>")
+                            while s < 8:
+                                s += 1
+                                html_file.append(cabs[x][y][c][s][n])
+                                if n == 3 and c != 0:
+                                    html_file.append("<tr><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>")
+                                else:
+                                    html_file.append("</tr>\n")
+                    html_file.append("</table></td>\n")
+        html_file.append("</tr>")
+    html_file.append("</table></body></html>")
+    html_file.close()
+
+update_pict()
+print_pict()
