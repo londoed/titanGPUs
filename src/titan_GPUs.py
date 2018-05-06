@@ -73,7 +73,7 @@ def update_pict(cabs):
             n = nd[10],
 
 #       Print cabs
-cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
+return cabs[x][y][c][s][n] = "<td bgcolor=\"green\">n</td>"
 file1.close()
 
 file2 = open("service.txt", 'r')
