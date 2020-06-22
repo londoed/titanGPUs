@@ -146,5 +146,6 @@ def print_pict(cabs):
                 html_file.append("</tr>")
         html_file.append("</table></body></html>")
 
-update_pict()
-print_pict()
+if __name__ == '__main__':
+    update_pict()
+    print_pict()
