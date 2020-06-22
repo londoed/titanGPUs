@@ -1,4 +1,4 @@
-#!/user/Desktop/Scripts/Python
+#!/usr/bin/env python3
 #
 #       Python 3 script to monitor memory, health, and heartbeat errors on a
 #       Cray XK7 system.
